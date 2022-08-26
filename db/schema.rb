@@ -12,14 +12,17 @@
 
 ActiveRecord::Schema.define(version: 2022_08_25_160758) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "events", force: :cascade do |t|
     t.string "title"
     t.text "description"
     t.string "location"
     t.datetime "starts_at"
     t.datetime "ends_at"
-    t.integer "group_id", null: false
-    t.integer "user_id", null: false
+    t.bigint "group_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["group_id"], name: "index_events_on_group_id"
@@ -34,8 +37,8 @@ ActiveRecord::Schema.define(version: 2022_08_25_160758) do
   end
 
   create_table "memberships", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "group_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "group_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["group_id"], name: "index_memberships_on_group_id"
@@ -43,8 +46,8 @@ ActiveRecord::Schema.define(version: 2022_08_25_160758) do
   end
 
   create_table "rsvps", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "event_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "event_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "attended"

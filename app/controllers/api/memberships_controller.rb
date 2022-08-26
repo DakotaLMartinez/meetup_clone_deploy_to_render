@@ -1,4 +1,4 @@
-class MembershipsController < ApplicationController
+class Api::MembershipsController < ApplicationController
   before_action :set_membership, only: [:destroy]
   before_action :authorize_user, only: [:destroy]
 
