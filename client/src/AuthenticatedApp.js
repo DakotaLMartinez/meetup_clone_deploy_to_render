@@ -8,7 +8,7 @@ function AuthenticatedApp({ currentUser, setCurrentUser }) {
   const history = useHistory()
   
   const handleLogout = () => {
-    fetch(`/logout`, {
+    fetch(`/api/logout`, {
       method: 'DELETE',
       credentials: 'include'
     })

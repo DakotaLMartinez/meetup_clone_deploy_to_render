@@ -7,7 +7,7 @@ function GroupsContainer() {
   const [groups, setGroups] = useState([]);
 
   useEffect(() => {
-    fetch("/groups", {
+    fetch("/api/groups", {
       credentials: 'include'
     })
       .then(res => res.json())
@@ -17,7 +17,7 @@ function GroupsContainer() {
 
   const leaveGroup = (groupId) => {
     let membership = groups.find(group => group.id === groupId).membership.id
-    return fetch(`/memberships/${membership}`, {
+    return fetch(`/api/memberships/${membership}`, {
       method: 'DELETE',
       credentials: 'include'
     })
@@ -39,7 +39,7 @@ function GroupsContainer() {
   }
 
   const joinGroup = (groupId) => {
-    return fetch('/memberships', {
+    return fetch('/api/memberships', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -72,7 +72,7 @@ function GroupsContainer() {
   }
 
   const createGroup = (formData) => {
-    return fetch("/groups", {
+    return fetch("/api/groups", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
