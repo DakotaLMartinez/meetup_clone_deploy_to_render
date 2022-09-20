@@ -27,3 +27,4 @@ services:
 databases: # Render PostgreSQL database
   - name: postgresql-deep-94916
     ipAllowList: [] # only allow internal connections
+    plan: free
